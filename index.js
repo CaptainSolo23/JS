@@ -328,7 +328,7 @@ function contarRepeticiones(array) {
    *
    */
 
-console.log(reps(birds))
+//console.log(reps(birds))
 
 const giftIds = [5,1,5,1]
 
@@ -364,3 +364,20 @@ function firstRepeat(arr){ //optimizado o menos noob
 }
 
 //console.log(firstRepeat(giftIds))
+
+function arraySum(ar){
+    return ar.reduce((acc, num) => acc + num)
+}
+
+// console.log(arraySum([1,2,3]))
+
+const gifts = ["oso", "tren", "pelota"]
+const materials = "tronesa"
+
+function manufacture(gifts, materials) {
+    return gifts.filter(gift => gift.split('').every(char => materials.includes(char)));
+}
+
+console.log(manufacture(gifts, materials))
+
+
