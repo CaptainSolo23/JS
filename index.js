@@ -378,6 +378,33 @@ function manufacture(gifts, materials) {
     return gifts.filter(gift => gift.split('').every(char => materials.includes(char)));
 }
 
-console.log(manufacture(gifts, materials))
+// console.log(manufacture(gifts, materials))
 
 
+const matrix = [[ 1,2,3], [4,5,6],[7,8,9]]
+
+function absoluteX(m){
+
+    let primarySum = 0 // suma de la diagonal principal
+    let secondarySum = 0 //suma de la diagonal secundaria
+    let n = m.length // longitud de la matriz
+
+    for(let i = 0; i < n; i++){
+        for(let j = 0; j < m[i].length ; j++){
+            if(i === j){ //estamos en la diagonal principal 0,0 1,1 2,2
+                primarySum += m[i][j]
+            }
+        }
+    }
+
+    for(let i = n; i >=0 ; i--){ //i en su maxima longitud para el ultimo elemento
+        for(let j = 0; j < n; j++){ //j en su longtud minima para estar en el primer elemento de la d secundaria
+            if(i + j === n-1){ // diagonal secunaria 2,0 1,1 0,2 = 2 siempre
+                secondarySum += m[i][j]
+            }
+        }
+    }
+    return Math.abs(primarySum + secondarySum)
+}
+            
+console.log(absoluteX(matrix))
