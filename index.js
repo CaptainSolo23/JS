@@ -382,6 +382,7 @@ function manufacture(gifts, materials) {
 
 
 const matrix = [[ 1,2,3], [4,5,6],[7,8,9]]
+const arr3 = [0,1,2]
 
 function absoluteX(m){
 
@@ -397,9 +398,9 @@ function absoluteX(m){
         }
     }
 
-    for(let i = n; i >=0 ; i--){ //i en su maxima longitud para el ultimo elemento
-        for(let j = 0; j < n; j++){ //j en su longtud minima para estar en el primer elemento de la d secundaria
-            if(i + j === n-1){ // diagonal secunaria 2,0 1,1 0,2 = 2 siempre
+    for(let i = n - 1; i >=0 ; i--){ //i en su maxima longitud para el ultimo elemento
+        for(let j = 0; j < m[i].length; j++){ //j en su longtud minima para estar en el primer elemento de la d secundaria
+            if(i + j === n - 1){ // diagonal secunaria 2,0 1,1 0,2 = 2 siempre
                 secondarySum += m[i][j]
             }
         }
@@ -407,4 +408,165 @@ function absoluteX(m){
     return Math.abs(primarySum + secondarySum) //si hay un negativo devuelve el absoluto
 }
             
-console.log(absoluteX(matrix))
+//console.log(absoluteX(matrix))
+//console.log(matrix.length)
+//console.log("array length is: " + arr3.length)
+
+let nums1 = [1,2,3,4,3,2,1]
+
+function palNum(a){
+
+    for(let i = 0; i < a.length/2 ; i++){
+        if(nums1[i] !== nums1[a.length - 1 - i])
+        return false
+    }
+    return true
+}
+
+// console.log(palNum(nums1))
+
+const string1 = "aa"
+const re = /^([aeiou]).*\1$/
+
+/**if(re.test(string1)){
+    console.log('true')
+} else {
+    console.log('false')
+}
+*/
+
+/*function staircase(n){
+    for(let i = 0 ; i < n; i++){
+        let row = ''
+        for(let j = n - i -1 ; j >= 0; j--){
+            if(j >= i){
+                row+=' '
+            }
+            else{
+                row+= '#'
+            }
+        }
+        console.log(row)
+    }
+}
+*/
+
+function staircase(n){
+
+    for(let i = 0; i < n  ;i++){
+    let row = ''
+    for(let j = 0; j < n - i - 1; j++){
+        row+=' '
+    }
+    for(let k = n-i-1 ; k < n ; k++){
+        row+='#'
+    }
+    console.log(row)
+    }
+}
+
+//staircase(6)
+
+function findNumber(arr,n){
+    if(arr.includes(n)){
+        return "YES"
+    }
+    return "NO"
+}
+
+// console.log(findNumber([1,2,3,4,5,6],1))
+
+function oddNumbers(l, r) {
+    let result = []
+    for(let i = l; i <= r; i++){
+        if(i % 2 !== 0){
+            result.push(i)
+        }
+    }
+    return result
+}
+
+// console.log(oddNumbers(3,9))
+
+let arreglo = [2,7,152,33,1]
+let arreglo1 = arreglo.sort((a,b) => a-b)
+//console.log(arreglo1)
+
+function birthdayCakeCandles(candles){
+
+    let arr = candles.sort((a,b)=>a-b)
+    let max = arr[arr.length - 1]
+    let candleCount = 0
+
+    for(let i = arr.length - 1; i >= 0; i--){
+        if(arr[i] === max){
+            candleCount++
+        }
+        else{
+            return candleCount
+        }
+    }
+    return -1
+}
+
+//console.log(birthdayCakeCandles([4,4,1,3,4]))
+
+function birthdayCandles(candles){
+    let maxHeight = candles[0]
+    let curr = 0
+    let count = 0;
+    
+    for(let i = 0; i < candles.length; i++){
+        let curr = candles[i]
+        if(curr > maxHeight){
+            maxHeight = curr
+            count = 1
+        } else if(curr === maxHeight){
+            count++
+        }
+    }
+    return count
+}
+
+// console.log(birthdayCandles([4,4,1,3,4]))
+
+function plusMinus(arr) {
+    // Write your code here
+    let length = arr.length;
+    let pos = 0;
+    let neg = 0;
+    let zer = 0;
+    
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === 0){
+            zer++;
+        }
+        else if(arr[i] > 0){
+            pos++;
+        }
+        else{
+            neg++
+        }
+    }
+    console.log((pos/length).toFixed(4))
+    console.log((neg/length).toFixed(4))
+    console.log((zer/length).toFixed(4))
+
+
+}
+
+
+function convert(s) { //convert 12h time to 24h time
+    
+    let[hours,minutes,seconds] = s.split(":");
+
+    if(seconds.includes("PM") && hours !== "12"){
+        hours = String(Number(hours) + 12)
+    }
+     if(seconds.includes("AM") && hours === "12"){
+        hours = "00"
+    }
+    return `${hours}:${minutes}:${seconds.slice(0,-2)}`
+}
+
+console.log(convert("01:45:00PM"))
