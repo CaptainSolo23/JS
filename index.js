@@ -404,7 +404,7 @@ function absoluteX(m){
             }
         }
     }
-    return Math.abs(primarySum + secondarySum)
+    return Math.abs(primarySum + secondarySum) //si hay un negativo devuelve el absoluto
 }
             
 console.log(absoluteX(matrix))
