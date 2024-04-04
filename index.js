@@ -569,4 +569,65 @@ function convert(s) { //convert 12h time to 24h time
     return `${hours}:${minutes}:${seconds.slice(0,-2)}`
 }
 
-console.log(convert("01:45:00PM"))
+//console.log(convert("01:45:00PM"))
+
+function lonelyinteger(a) {
+    
+    for(let i = 0; i < a.length; i++){
+        
+        let count = 0
+        
+        for(let j = 0; j < a.length; j++){
+            if(a[i] === a[j]){
+                count++
+            }
+        }
+        if(count === 1){
+            return a[i]
+        }
+    }
+}
+
+//console.log(lonelyinteger([1,2,3,4,3,2,1]))
+
+function diagonalDifference(arr) {
+    
+    let l = arr.length
+    let primD = 0;
+    let secD= 0;
+    
+    for(let i = 0; i < l; i++){
+        for(let j = 0; j < arr[i].length; j++){
+            if(i === j){
+                primD+= arr[i][j]
+            }
+        }
+    }
+    
+    for(let i = l - 1; i>= 0; i--){
+        for(let j = 0; j < l; j++){
+            if(i + j === l-1){
+                secD += arr[i][j]
+            }
+        }
+    }
+    
+    return Math.abs(primD - secD)
+}
+
+//console.log(diagonalDifference([[11,2,4],[4,5,6],[10,8,-12]]))
+
+
+function countingSort(arr) { //Hackerrank coutingsort
+    // Write your code he
+    let count = Array(100).fill(0)
+    
+    for(let i = 0; i<arr.length; i++){
+        let num = arr[i]
+        if(num >= 0 && num <= 100){
+            count[num]++
+        }
+    }
+    
+    return count
+}
