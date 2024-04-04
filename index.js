@@ -631,3 +631,11 @@ function countingSort(arr) { //Hackerrank coutingsort
     
     return count
 }
+
+// Day 1 mock test: Find the median 
+function findMedian(arr) {
+    let l = Math.floor(arr.length/2)
+    let arr1 = arr.sort((a,b)=>a-b)
+    
+    return arr1[l]
+}
