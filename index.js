@@ -639,3 +639,125 @@ function findMedian(arr) {
     
     return arr1[l]
 }
+
+const grade = 38;
+
+function gradeSystem(g){
+    if((g+1)%5 === 0){
+        return g+1
+    }
+    else if((g+2)%5 === 0){
+        return g+2
+    }
+    else{
+        return g
+    }
+}
+
+// console.log(gradeSystem(grade))
+
+// console.log("module: " + 38%5)
+
+function gradingStudents(grades) {
+    
+    let results = []
+    
+    for(let i = 0; i<grades.length; i++){
+        
+        let module = grades[i] % 5;
+        
+        if(5 - module >= 3){
+            results.push(grades[i])
+        } else{
+            results.push(grades[i] + (5-module))
+        }
+    }
+    return results
+}
+
+function gradingStudents1(grades){ 
+    let finalGrades = grades.map((grade) => { 
+        return grade >= 38 && grade % 5 >= 3  ? grade - (grade % 5) + 5 : grade;         
+      }); 
+    return finalGrades; 
+   }
+
+let alphabet = ['b','c','d','e','a','g','f']
+// console.log(alphabet.sort())
+// console.log(alphabet.sort((a,b) => b.localeCompare(a))) //ordenar en invertido
+
+
+const getData = async () => {
+    try{
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon/blastoise")
+        if(!response.ok){
+            throw new Error(response.status)
+           }
+        const data = await response.json() 
+            console.log(data.name)
+  
+        } catch(error) {
+            console.error("ocurrio un error: ", error.message)
+        }
+}
+
+
+
+function fairRations(B) { // repartir el pan de manera equitativa, para que todos queden pares, y darle uno enfrente o atras contar las barras que se usaron, retornar NO si es imposible
+    // Write your code here
+    let loaves=0;
+    for(let i = 0; i< B.length - 1 ; i++){
+        if(B[i]%2 !== 0){
+            B[i]++;
+            loaves++
+            B[i+1]++;
+            loaves++
+        }
+    }
+    return B[B.length-1] % 2 === 0 ?  loaves :  "NO"
+}
+
+/**
+ * Ejemplo de como trabajar con input en lineas 
+ * ej: 3
+ * sam 456123
+ * tom 354965
+ * harry 654321
+ * sam
+ * john 
+ * harry 
+ */
+
+function processData(input){
+ // manejar la entrada de datos 
+
+    const inputArr = input.split("\n")
+    const n = parseInt(inputArr[0], 10)
+    const entries = inputArr.slice(1, n+1)
+    const queries = inputArr.slice(n+1)
+
+
+    //  cuidar los constraints
+    if(n < 1 || n > 10000){
+        return
+    }
+
+    if(queries.length < 1 || queries.length > 10000){
+        return
+    }
+  // crear la agenda
+    
+    const contacts = new Map()
+    for(entry of entries){
+        const[name, phone] = entry.split(" "); // utilizar el espacio para crear arrays de valores 
+        contacts.set(name, phone) //asignar los pares con los valores de los subarrays 
+    }
+
+    for(query of queries){
+        if(contacts.has(query)){
+            console.log(query + '=' + contacts.get(query))
+        } else{
+            console.log("Not found")
+        }
+    }
+}
